@@ -89,7 +89,7 @@ function displayCounty(data) {
       }
       return border;
     }
-    const border = borderCountry();
+    border = borderCountry();
     const dark = getLocalstorage("darkMode");
     let darkMode = "";
     if (dark === "active") {
