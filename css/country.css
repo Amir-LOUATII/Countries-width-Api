@@ -1,0 +1,230 @@
+/* general rules */
+* {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+ul {
+  list-style: none;
+}
+body {
+  font-family: "kumbh sans", sans-serif;
+}
+.container {
+  padding-left: 15px;
+  padding-right: 15px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+@media (min-width: 768px) {
+  .container {
+    width: 750px;
+  }
+}
+
+@media (min-width: 992px) {
+  .container {
+    width: 970px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .container {
+    width: 1170px;
+  }
+}
+
+/*  css variable*/
+:root {
+  --main-transition: 0.3s;
+  --Dark-Blue: hsl(209, 23%, 22%);
+  --Very-Dark-Blue: hsl(207, 26%, 17%);
+  --Very-Dark-Blue-text: hsl(200, 15%, 8%);
+  --Dark-Gray: hsl(0, 0%, 52%);
+  --Very-Light-Gray: #ebeced;
+  --White: hsl(0, 0%, 100%);
+}
+/* css component */
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: var(--Very-Light-Gray);
+}
+
+body.dark-mode {
+  background-color: var(--Very-Dark-Blue);
+}
+/* end css rules */
+
+/* styling bach button */
+
+main .container .back {
+  padding: 5px 10px;
+  border: none;
+  background-color: var(--White);
+  color: var(--Very-Dark-Blue-text);
+  cursor: pointer;
+}
+
+main .container .back i {
+  margin-right: 5px;
+}
+
+main .container .back.dark-mode {
+  background-color: var(--Dark-Blue);
+  color: var(--White);
+}
+
+/* start cont*/
+.cont {
+  width: 100%;
+  min-height: 50vh;
+  position: relative;
+}
+.cont .loader {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100px;
+}
+
+.cont .loader.hide {
+  display: none;
+}
+/* start content  */
+.country-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 60px 0;
+  width: 100%;
+}
+
+@media (max-width: 767px) {
+  .country-content {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
+.country-content .col:first-of-type {
+  flex-basis: 40%;
+}
+
+.country-content .col:last-of-type {
+  flex-basis: 60%;
+}
+
+@media (max-width: 767px) {
+  .country-content .col {
+    width: 100%;
+  }
+}
+/* styling image */
+.country-content .col:first-of-type.img {
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  justify-self: center;
+}
+.country-content .col:first-of-type {
+  align-items: center;
+}
+.country-content .col:first-of-type img {
+  width: 100%;
+  max-width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* styling info */
+.country-content h2 {
+  margin: 10px 0;
+  padding: 5px 0;
+  font-size: 25px;
+  text-transform: capitalize;
+}
+
+.country-content .col:last-of-type {
+  margin-left: 40px;
+}
+
+@media (max-width: 767px) {
+  .country-content .col:last-of-type {
+    margin-left: 0;
+  }
+}
+
+.country-content .infos {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+@media (max-width: 767px) {
+  .country-content .infos {
+    flex-direction: column;
+  }
+}
+
+.country-content .infos h3 {
+  margin: 10px 0;
+  font-size: 16px;
+  text-transform: capitalize;
+  line-height: 1.4;
+}
+
+.country-content .infos span {
+  color: var(--Dark-Gray);
+  font-weight: normal;
+}
+
+.country-content .border {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  margin-top: 30px;
+  color: var(--Dark-Gray);
+}
+
+@media (max-width: 767px) {
+  .country-content .border {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
+.country-content .border h3 {
+  margin: 0;
+  text-transform: capitalize;
+  padding: 5px 0;
+  font-size: 16px;
+  color: var(--Very-Dark-Blue);
+  margin-right: 8px;
+}
+
+.country-content .border span {
+  display: inline-block;
+  padding: 5px 10px;
+  border: 2px solid var(--Dark-Gray);
+  margin-left: 8px;
+  background-color: var(--White);
+  color: var(--Dark-Gray);
+}
+.country-content .border span a {
+  text-decoration: inherit;
+  color: inherit;
+}
+/* content darkMode */
+.country-content.dark-mode h2 {
+  color: var(--White);
+}
+.country-content.dark-mode h3 {
+  color: var(--White);
+}
+.country-content.dark-mode .border span {
+  background-color: var(--Dark-Blue);
+  border-color: var(--Dark-Blue);
+  color: var(--White);
+}
+/* end content */

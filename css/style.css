@@ -1,0 +1,342 @@
+/* general rules */
+* {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+ul {
+  list-style: none;
+}
+body {
+  font-family: "kumbh sans", sans-serif;
+}
+.container {
+  padding-left: 15px;
+  padding-right: 15px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+@media (min-width: 768px) {
+  .container {
+    width: 750px;
+  }
+}
+
+@media (min-width: 992px) {
+  .container {
+    width: 970px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .container {
+    width: 1170px;
+  }
+}
+
+/*  css variable*/
+:root {
+  --main-transition: 0.3s;
+  --Dark-Blue: hsl(209, 23%, 22%);
+  --Very-Dark-Blue: hsl(207, 26%, 17%);
+  --Very-Dark-Blue-text: hsl(200, 15%, 8%);
+  --Dark-Gray: hsl(0, 0%, 52%);
+  --Very-Light-Gray: #ebeced;
+  --White: hsl(0, 0%, 100%);
+}
+/* css component */
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: var(--Very-Light-Gray);
+}
+
+body.dark-mode {
+  background-color: var(--Very-Dark-Blue);
+}
+/* end css rules */
+
+/* start header */
+header {
+  width: 100%;
+  background-color: var(--White);
+  color: var(--Very-Dark-Blue-text);
+}
+
+/* header dark mode */
+header.dark-mode {
+  background-color: var(--Dark-Blue);
+  color: var(--Very-Light-Gray);
+}
+
+header nav .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+header nav .container .text {
+  font-size: 24px;
+  font-weight: bold;
+}
+header nav .container .dark {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+header nav .container .dark i {
+  margin-right: 10px;
+}
+
+header nav .container .dark-mode:hover {
+  text-decoration: underline;
+}
+
+/* start main  */
+main {
+  padding: 40px 0;
+}
+/* start form  */
+
+form {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 100%;
+}
+@media (max-width: 767px) {
+  form {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
+/* search form */
+form .search {
+  position: relative;
+  color: var(--Dark-Gray);
+  max-width: 100%;
+}
+
+form .search.dark-mode {
+  color: white;
+}
+
+form .search i {
+  position: absolute;
+  left: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 2;
+}
+
+form .search [type="search"] {
+  width: 350px;
+  height: 40px;
+  border: none;
+  padding: 5px 5px 5px 40px;
+  background-color: var(--White);
+  border-radius: 5px;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+}
+
+@media (max-width: 767px) {
+  form .search [type="search"] {
+    max-width: 100%;
+    margin-bottom: 20px;
+  }
+}
+
+form .search [type="search"]::placeholder {
+  color: var(--Dark-Gray);
+}
+
+form .search [type="search"].dark-mode {
+  background-color: var(--Dark-Blue);
+  color: var(--White);
+}
+
+form .search [type="search"].dark-mode::placeholder {
+  color: var(--White);
+}
+
+form .search [type="search"]:focus {
+  outline: none;
+}
+
+form .search [type="search"]:focus::placeholder {
+  opacity: 0;
+}
+
+/* select styling */
+select {
+  width: 200px;
+  height: 40px;
+  color: var(--Very-Dark-Blue-text);
+  background-color: var(--White);
+  border: none;
+  padding: 5px 5px 5px 20px;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+}
+
+select:focus {
+  outline: none;
+}
+
+select option {
+  color: var(--Very-Dark-Blue-text);
+  background-color: var(--White);
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+}
+/* select dark mode */
+select.dark-mode {
+  background-color: var(--Dark-Blue);
+  color: var(--Very-Light-Gray);
+}
+
+select.dark-mode option {
+  color: var(--White);
+  background-color: var(--very-Dark-Blue);
+}
+
+/* content styling */
+
+.cont {
+  padding: 40px 0;
+  position: relative;
+  min-height: calc(100vh - 400px);
+  max-width: 100%;
+}
+.cont .loading {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100px;
+}
+.cont .loading img {
+  max-width: 100%;
+}
+.cont .loading.hide {
+  display: none;
+}
+
+.cont .content {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 30px;
+  max-width: 100%;
+}
+
+.cont .content a {
+  text-decoration: none;
+  color: var(--Very-Dark-Blue-text);
+}
+
+/* card styling */
+.cont .content a .card {
+  min-width: 280px;
+  background-color: var(--White);
+  padding: 20px 10px;
+  border-radius: 10px;
+  max-width: 100%;
+  font-size: 14px;
+  min-height: 340px;
+}
+.cont .content a .card:hover {
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+.cont .content a .card img {
+  width: 100%;
+  max-width: 100%;
+  min-height: 180px;
+  max-height: 180px;
+}
+
+.cont .content a .card h2 {
+  margin: 10px 0;
+  padding: 5px 0;
+  font-size: 18px;
+  text-transform: capitalize;
+}
+
+.cont .content a .card h3 {
+  margin: 5px 0;
+  font-size: 14px;
+  text-transform: capitalize;
+}
+
+.cont .content a .card span {
+  color: var(--Dark-Gray);
+}
+/* card dark mode */
+.cont .content a .card.dark-mode {
+  background-color: var(--Dark-Blue);
+}
+
+.cont .content a .card.dark-mode h2 {
+  color: var(--Very-Light-Gray);
+}
+
+.cont .content a .card.dark-mode h3 {
+  color: var(--Very-Light-Gray);
+}
+
+.cont .content a .card.dark-mode span {
+  font-weight: normal;
+  color: var(--Very-Light-Gray);
+}
+
+/* end content */
+
+/*start buttons */
+.buttons {
+  margin: 40px auto 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.btn-container {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.buttons.hide {
+  display: none;
+}
+
+.hide {
+  display: none !important;
+}
+.buttons button {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 10px;
+  cursor: pointer;
+  font-weight: bold;
+  background-color: var(--White);
+  color: var(--Very-Dark-Blue-text);
+  font-size: 18px;
+  border: none;
+}
+
+.buttons button.dark-mode {
+  background-color: var(--Dark-Blue);
+  color: var(--Very-Light-Gray);
+  border-radius: 5px;
+  color: white;
+}
+
+.buttons button.dark-mode.active {
+  background-color: var(--Very-Dark-Blue-text);
+}
+
+.buttons button.active {
+  background-color: gainsboro;
+}
