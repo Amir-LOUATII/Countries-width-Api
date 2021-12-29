@@ -68,7 +68,6 @@ function displayCounty(data) {
             });
             return country;
           });
-          console.log(border);
           border = border.map((ele) => {
             const cont = ele.map((item) => item.name.common);
             return cont;
