@@ -1,6 +1,7 @@
+import { getData } from "./fetchData.js";
 import { getElement, getLocalstorage } from "./utils.js";
 
-function displayCounty(data) {
+async function displayCounty(data) {
   const loader = getElement(".loader");
   loader.classList.add("hide");
   const content = getElement(".country-content");
@@ -56,12 +57,11 @@ function displayCounty(data) {
     let border = "";
     async function borderCountry() {
       const url = "https://restcountries.com/v3.1/all";
-      let data = await fetch(url);
-      if (data) {
-        data = JSON.parse(data);
+      const theData = await getData(url);
+      if (theData) {
         if (borders) {
           border = borders.map((item) => {
-            const country = data.filter((it) => {
+            const country = theData.filter((it) => {
               if (it.fifa == item) return it.fifa == item;
               else if (it.name.common == it) return it.name.common == it;
               else return;
@@ -81,7 +81,6 @@ function displayCounty(data) {
               return `<span class="border-country"><a href="country.html?name=${item}">${item}</a></span>`;
             })
             .join("");
-          console.log(border);
         }
         if (!borders) {
           border = "No borders countries";
@@ -89,7 +88,7 @@ function displayCounty(data) {
       }
       return border;
     }
-    border = borderCountry();
+    border = await borderCountry();
     const dark = getLocalstorage("darkMode");
     let darkMode = "";
     if (dark === "active") {
