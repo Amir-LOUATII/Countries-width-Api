@@ -55,11 +55,31 @@ function displayCounty(data) {
     // border
     let border = "";
     if (borders) {
-      border = borders
+      const data = JSON.parse(window.localStorage.getItem("data"));
+      console.log(data);
+      border = borders.map((item) => {
+        const country = data.filter((it) => {
+          if (it.fifa == item) return it.fifa == item;
+          else if (it.name.common == it) return it.name.common == it;
+          else return;
+        });
+        return country;
+      });
+      console.log(border);
+      border = border.map((ele) => {
+        const cont = ele.map((item) => item.name.common);
+        return cont;
+      });
+      border = border.reduce((accu, curr) => {
+        accu.push(...curr);
+        return accu;
+      }, []);
+      border = border
         .map((item) => {
           return `<span class="border-country"><a href="country.html?name=${item}">${item}</a></span>`;
         })
         .join("");
+      console.log(border);
     }
     if (!borders) {
       border = "No borders countries";
