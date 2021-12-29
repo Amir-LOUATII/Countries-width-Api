@@ -1,7 +1,7 @@
 import { getData } from "./fetchData.js";
 import { getElement, getLocalstorage } from "./utils.js";
 
-async function displayCounty(data) {
+function displayCounty(data) {
   const loader = getElement(".loader");
   loader.classList.add("hide");
   const content = getElement(".country-content");
@@ -55,9 +55,9 @@ async function displayCounty(data) {
     const pop = Intl.NumberFormat("en-us").format(population);
     // border
     let border = "";
-    async function borderCountry() {
-      const url = "https://restcountries.com/v3.1/all";
-      const theData = await getData(url);
+    function borderCountry() {
+      const theData = JSON.parse(window.localStorage.getItem("data"));
+      console.log(theData);
       if (theData) {
         if (borders) {
           border = borders.map((item) => {
@@ -88,7 +88,7 @@ async function displayCounty(data) {
       }
       return border;
     }
-    border = await borderCountry();
+    border = borderCountry();
     const dark = getLocalstorage("darkMode");
     let darkMode = "";
     if (dark === "active") {

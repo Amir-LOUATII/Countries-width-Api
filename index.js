@@ -16,6 +16,7 @@ let index = 0;
 let pages = [];
 window.addEventListener("DOMContentLoaded", async function () {
   const data = await getData(url);
+  window.localStorage.setItem("data", JSON.stringify(data));
   const pages = paginate(data);
   displayCountries(pages[0]);
   displayButton(btnContainer, pages, index);
