@@ -217,6 +217,7 @@ main .container .back.dark-mode {
   margin-left: 8px;
   background-color: var(--White);
   color: var(--Dark-Gray);
+  margin: 5px;
 }
 .country-content .border span a {
   text-decoration: inherit;
