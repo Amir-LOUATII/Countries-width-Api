@@ -89,9 +89,16 @@ main .container .back.dark-mode {
   width: 100px;
 }
 
+.cont h1 {
+  color: var(--Dark-Gray);
+}
+.cont h1.hide {
+  display: none;
+}
 .cont .loader.hide {
   display: none;
 }
+/* end cont */
 /* start content  */
 .country-content {
   display: flex;

@@ -4,9 +4,7 @@ function displayCounty(data) {
   const loader = getElement(".loader");
   loader.classList.add("hide");
   const content = getElement(".country-content");
-
   const country = data[0];
-  console.log(country);
   if (data.length > 0) {
     const {
       altSpellings,
@@ -111,7 +109,8 @@ function displayCounty(data) {
       content.classList.toggle("dark-mode");
     });
   } else {
-    content.textContent = "Sorry no infos about this country";
+    const errMsg = getElement(".cont h1");
+    errMsg.classList.remove("hide");
   }
 }
 
