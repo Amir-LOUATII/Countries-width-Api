@@ -3,8 +3,11 @@ import { getElement, getLocalstorage } from "./utils.js";
 function displayCounty(data) {
   const loader = getElement(".loader");
   loader.classList.add("hide");
+  const content = getElement(".country-content");
+
   const country = data[0];
-  if (country.length > 1) {
+  console.log(country);
+  if (data.length > 0) {
     const {
       altSpellings,
       name: { common, nativeName },
@@ -64,13 +67,12 @@ function displayCounty(data) {
       border = "No borders countries";
     }
 
-    const Content = getElement(".country-content");
     const dark = getLocalstorage("darkMode");
     let darkMode = "";
     if (dark === "active") {
       darkMode = "dark-mode";
     } else darkMode = "";
-    Content.innerHTML = `  <div class="country-content ${darkMode}">
+    content.innerHTML = `  <div class="country-content ${darkMode}">
   <div class="col">
   <div class="img"><img src=${png} alt="country flag" /></div>
   </div>
@@ -106,7 +108,7 @@ function displayCounty(data) {
     // dark mode
     const darkBtn = getElement(".dark");
     darkBtn.addEventListener("click", function () {
-      Content.classList.toggle("dark-mode");
+      content.classList.toggle("dark-mode");
     });
   } else {
     content.textContent = "Sorry no infos about this country";
