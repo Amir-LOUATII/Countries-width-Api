@@ -4,72 +4,73 @@ function displayCounty(data) {
   const loader = getElement(".loader");
   loader.classList.add("hide");
   const country = data[0];
-  const {
-    altSpellings,
-    name: { common, nativeName },
-    borders,
-    flags: { png },
-    population,
-    region,
-    capital,
-    subregion,
-    currencies,
-    languages,
-  } = country;
+  if (country.length > 1) {
+    const {
+      altSpellings,
+      name: { common, nativeName },
+      borders,
+      flags: { png },
+      population,
+      region,
+      capital,
+      subregion,
+      currencies,
+      languages,
+    } = country;
 
-  // nativename
-  function natName() {
-    const nt = Object.entries(nativeName);
-    const NativeN = nt[0]
-      .map((item) => {
-        if (typeof item === "object") {
-          if (item.common) {
-            return item.common;
+    // nativename
+    function natName() {
+      const nt = Object.entries(nativeName);
+      const NativeN = nt[0]
+        .map((item) => {
+          if (typeof item === "object") {
+            if (item.common) {
+              return item.common;
+            }
           }
-        }
-      })
-      .join("");
-    return NativeN;
-  }
+        })
+        .join("");
+      return NativeN;
+    }
 
-  const ntName = natName();
+    const ntName = natName();
 
-  // currencies
-  function currency() {
-    const CurrencyItems = Object.entries(currencies);
-    const curitem = CurrencyItems[0]
-      .map((item) => {
-        if (typeof item === "object") {
-          return item.name;
-        }
-      })
-      .join(" ");
-    return curitem;
-  }
-  let curr = currency();
+    // currencies
+    function currency() {
+      const CurrencyItems = Object.entries(currencies);
+      const curitem = CurrencyItems[0]
+        .map((item) => {
+          if (typeof item === "object") {
+            return item.name;
+          }
+        })
+        .join(" ");
+      return curitem;
+    }
+    let curr = currency();
 
-  // population format
-  const pop = Intl.NumberFormat("en-us").format(population);
-  // border
-  let border = "";
-  if (borders) {
-    border = borders
-      .map((item) => {
-        return `<span class="border-country"><a href="country.html?name=${item}">${item}</a></span>`;
-      })
-      .join("");
-  }
-  if (!borders) {
-    border = "No borders countries";
-  }
+    // population format
+    const pop = Intl.NumberFormat("en-us").format(population);
+    // border
+    let border = "";
+    if (borders) {
+      border = borders
+        .map((item) => {
+          return `<span class="border-country"><a href="country.html?name=${item}">${item}</a></span>`;
+        })
+        .join("");
+    }
+    if (!borders) {
+      border = "No borders countries";
+    }
 
-  const Content = getElement(".country-content");
-  const dark = getLocalstorage("darkMode");
-  let darkMode = "";
-  if (dark === "active") {
-    darkMode = "dark-mode";
-  } else darkMode = "";
-  Content.innerHTML = `  <div class="country-content ${darkMode}">
+    const Content = getElement(".country-content");
+    const dark = getLocalstorage("darkMode");
+    let darkMode = "";
+    if (dark === "active") {
+      darkMode = "dark-mode";
+    } else darkMode = "";
+    Content.innerHTML = `  <div class="country-content ${darkMode}">
   <div class="col">
   <div class="img"><img src=${png} alt="country flag" /></div>
   </div>
@@ -102,11 +103,14 @@ function displayCounty(data) {
     </div>
   </div>
 </div>`;
-  // dark mode
-  const darkBtn = getElement(".dark");
-  darkBtn.addEventListener("click", function () {
-    Content.classList.toggle("dark-mode");
-  });
+    // dark mode
+    const darkBtn = getElement(".dark");
+    darkBtn.addEventListener("click", function () {
+      Content.classList.toggle("dark-mode");
+    });
+  } else {
+    content.textContent = "Sorry no infos about this country";
+  }
 }
 
 export { displayCounty };
