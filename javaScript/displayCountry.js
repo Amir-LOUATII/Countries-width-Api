@@ -54,7 +54,7 @@ function displayCounty(data) {
     const pop = Intl.NumberFormat("en-us").format(population);
     // border
     let border = "";
-    async function border() {
+    async function borderCountry() {
       const url = "https://restcountries.com/v3.1/all";
       let data = await fetch(url);
       if (data) {
@@ -87,7 +87,9 @@ function displayCounty(data) {
           border = "No borders countries";
         }
       }
+      return border;
     }
+    const border = borderCountry();
     const dark = getLocalstorage("darkMode");
     let darkMode = "";
     if (dark === "active") {
