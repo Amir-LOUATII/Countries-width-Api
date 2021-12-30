@@ -1,2 +1,2 @@
 # Countries-width-Api
-This is a challenge from frontend mentor
+Solution to a Frontend Mentor challenge: creating a similar webpage as the design preview provided
